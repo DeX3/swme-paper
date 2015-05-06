@@ -1,5 +1,5 @@
 # swme-paper
-CI paper for Software Maintenance &amp; Evolution (LaTeX
+CI paper for Software Maintenance &amp; Evolution (LaTeX)
 
 ## Building
 
