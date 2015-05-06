@@ -7,7 +7,7 @@ You will need the `sig-alternate` document class to build this paper. You can ge
 
 ### Building with docker
 
-As managing classes is a bit of a pain, you can also use my docker image which has all required classes readily installed:
+As managing latex distributions is a bit of a pain, you can also use my docker image which has all required classes readily installed:
 
   docker pull theromanempire/latex
   
