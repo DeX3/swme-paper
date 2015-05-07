@@ -13,14 +13,14 @@ As managing latex distributions is a bit of a pain, you can also use my docker i
     
     # Build the file using this command:
     docker run --rm -i -v \
-      $PWD:/data \
+      $PWD:/latex \
       theromanempire/latex \
-      /bin/sh -c "bibtex paper && pdflatex --synctex=1 paper.tex && pdflatex --synctex=1 %'
+      autobuild paper.tex'
                         
 Additionally, if you're using vim, you can simply do:
 
     let &makeprg='docker run --rm -i
-    \ -v $PWD:/data theromanempire/latex
-    \ /bin/sh -c "bibtex %:r && pdflatex --synctex=1 % && pdflatex --synctex=1 %"'
+    \ -v $PWD:/latex theromanempire/latex
+    \ mklatex -pdf paper.tex'
 
 So that running :Make on the `paper.tex` file will build the file.
