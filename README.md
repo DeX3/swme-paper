@@ -15,7 +15,7 @@ As managing latex distributions is a bit of a pain, you can also use my docker i
     docker run --rm -i -v \
       $PWD:/latex \
       theromanempire/latex \
-      autobuild paper.tex'
+      autobuild paper.tex
                         
 Additionally, if you're using vim, you can simply do:
 
