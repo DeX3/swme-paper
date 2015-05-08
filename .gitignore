@@ -6,5 +6,7 @@
 *.pdf
 *.synctex.gz
 *.bak
+*.fls
+*.fdb_latexmk
 latex/
 JabRef-2.10.jar
