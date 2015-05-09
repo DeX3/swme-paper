@@ -3,50 +3,7 @@
 In this section, we discuss the integral core concepts of Continuous Integration
 in order to give the reader a good understanding of its principles.
 
-\subsection{Motivation}\label{sec:motivation}
-
-The main goal of Continuous Integration is to minimize integration issues when
-deploying release-versions of the product. Because builds happen often and
-regularly, these issues can be identified very quickly and will not cause
-stressful last-minute fixes. The incorporation of unit tests into the
-build (see \ref{sec:tests}) can further increase fast error detection. Another
-important aspect of Continuous Integration is the provision of a reporting
-agent, a way that developers get informed about failing builds.
-
-\subsubsection{Merge hell}
-
-In big software projects, a large number of developers work together to create
-software. To be able to work on the same project simultaneously, typically, a
-version-control system such as GIT is utilized
-\footnote{\url{http://git-scm.com/}}.\\
-
-Developers usually branch off from a common baseline ("master"), implement their
-feature in their own copy ("feature-branch") and when finished, merge their
-branch back into the master. However, if a large number of developers do that,
-and their features are large and/or implemented in overlapping parts of the
-source code, developers have to face merge-conflicts when integrating their
-branch back into the baseline. These conflicts can easily get out of hand.
-Figure \ref{fig:merge-hell} shows an example of such a situation.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.6\linewidth]{images/merge-hell.png}
-    \caption{An example of "merge-hell" \cite{mooij:2010}}
-    \label{fig:merge-hell}
-\end{figure}
-
-Solving these conflicts can be non-trivial task, especially for the introduction
-of completely new features, since the developer who has to perform the merge
-typically is not yet accustomed to the code another developer only just
-created.\\
-
-In order to keep large merge conflicts to a minimum and therefore circumvent
-this issue, Continuous Integration strives to integrate features back into the
-baseline branch frequently (e.g. multiple times per day).  Of course, this means
-that the term "feature" is bound to refer only to small changes throughout the
-project's life cycle.
-
-\subsubsection{Automation}\label{sec:automation}
+\subsection{Automation}\label{sec:automation}
 
 It would not be possible to facilitate Continuous Integration without a high
 degree of automation present in the building process. The CI-server has to be
@@ -56,20 +13,10 @@ cost-wise that the build-server uses the same system developers use locally to
 build the product, thus Continuous Integration has to be taken into account when
 first designing the project's development architecture.\\
 
-A big build can take time, so Continuous Integration systems have to be smart
-about it and for example only recompile source files that actually have changed.
+\subsubsection{Triggers}
 
-\subsection{Build types \& triggers}\label{sec:build-types-triggers}
-
-Continuous Integration systems usually go beyond the capabilities of a simple
-build-server. While running tests is also a main-task for a CI-system, they also
-have the capabilities to measure code metrics or perform actual deployment.
-
-\subsubsection{Triggers}\label{sec:triggers}
-
-What triggers these various build types is usually configured in the Continuous
-Integration system. The trigger scheme usually falls into one or more of the
-following categories:
+Builds in Continuous integration systems need to be triggered by some kind of
+event. The trigger usually falls into one or more of the following categories:
 
 \begin{itemize}
     \item Manually
@@ -118,12 +65,88 @@ or Mercurial\footnote{\url{http://mercurial.selenic.com/wiki/Hook}}.\\
 
 Triggers can of course be combined to provide multiple trigger points.
 
+\subsection{Build types}\label{sec:build-types}
+
+Continuous Integration systems usually go beyond the capabilities of a simple
+build-server. While running tests is also a main-task for a CI-system, they also
+have the capabilities to measure code metrics or perform actual deployment.
 
 \subsubsection{Builds}\label{sec:builds}
 
+The most common type of build is essentially what "build" used to refer to for
+local machines, only for a central Continuous Integration server. Depending on
+the type of applications, files are compiled, linked, minified, obfuscated and
+more. In short, all steps necessary to build a functional production-ready
+instance of the application are executed in order. The result of a successful
+build is a deployable application. Creating an actual build is in the majority of cases a necessary precondition to
+execute any other build type.\\
+
+A big build can take time, so Continuous Integration systems have to be smart
+about it and for example only recompile source files that actually have changed.
+
+The build process on the CI-server is ideally largely identical to the build
+process developers use on their local machines. This ensures coherent error
+reporting (avoiding questions like "why did it work for me, then?"). The
+tool-landscape for build automation has grown immensely in the past years, so
+that a large toolset is available to use. Various frameworks and programming
+languages have spawned different incarnations of build systems, such as GNU
+Make\footnote{\url{http://www.gnu.org/software/make/}} (C, C++, general
+purpose), Ant\footnote{\url{http://ant.apache.org/}},
+Maven\footnote{\url{https://maven.apache.org/}} or
+Gradle\footnote{\url{https://gradle.org/}} (Java), to web-specialized tools such as
+Grunt\footnote{\url{http://gruntjs.com/}} or
+Gulp\footnote{\url{http://gulpjs.com/}}.\\
+
+These systems all follow a basic workflow. You describe to the tool how you want
+your project to be built (in a "Makefile", "Gruntfile", ...), and the tool will
+then build your project for you. Typically these tools are smart enough to only
+recompile files that have changed.\\
+
+Additionally, some tools also incorporate dependency management. In this case
+the tools provide a way to download missing libraries or frameworks directly on
+build. This is actually a great feature to have, because with dependency
+management, the need to have all libraries checked into version control
+vanishes. This contributes to smaller commits and fewer merge conflicts (see
+\ref{sec:motivation}), because
+when a library is updated, ideally, the only affected line is the one that tells
+the build system what version to use.\\
+
+However, this approach also has a drawback. Since the repository does not hold
+all the code necessary to build a functional application, the build is dependent
+on external services. Examples for these services are the Maven
+repository\footnote{\url{http://mvnrepository.com/}} for Java libraries or the
+npm-registry\footnote{\url{https://www.npmjs.com/}} for node.js packages. This
+means, that if the external server is not available for whatever reason, no
+builds are possible during the downtime.
+
+A possible workaround would be to still manage the libraries via dependency
+management systems, but also check the downloaded libraries into version
+control. While this reintroduces the problem of large commits, it solves the
+issue of external service dependency. Another solution would be to host your own
+clone of the external service. While most of the tools basically support this
+\footnote{\url{https://docs.npmjs.com/misc/registry\#can-i-run-my-own-private-registry}}
+\footnote{\url{https://outofsingularity.wordpress.com/2011/05/15/create-custom-maven-repository-to-store-artifacts-unavailable-in-general-maven-repositories/}},
+it is a complex and expensive approach.
+
 \subsubsection{Tests}\label{sec:tests}
 
+It clearly makes sense to include automatic tests into the Continuous
+Integration process. With the CI-server performing tests on the built
+application, it becomes not only a baseline indicator for whether the code
+compiles, but also for whether the code actually performs its tasks. Of course
+tests will likely never be able to verify the application to a hundred percent,
+but they can at least give an indication.
+
+However, setting up proper testing in a CI-environment can be challenging. The
+test environment has to be self-contained. Most complex applications depend on
+other processes to function (e.g. databases, message brokers, communication
+pipelines, etc.). In order to be able to test the application, these services
+must also be bootstrapped and configured properly for testing. Ideally, the
+services are reset to a clean state before each test run. \\
+
 Best practice: Test in clone of real production...
+
+develop tests continuously
 
 \subsubsection{Static code analysis}\label{sec:static-code-analysis}
 
@@ -136,4 +159,5 @@ Address works-for-me-bugs
 \subsection{Source control}\label{sec:source-control}
 
 \subsection{Reporting}\label{sec:reporting}
+
 

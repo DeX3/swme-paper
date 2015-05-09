@@ -1,4 +1,5 @@
-\documentclass{sig-alternate}
+\documentclass{article}
+\usepackage[utf8]{inputenc}
 \usepackage{enumitem}
 \usepackage{listings}
 \usepackage{color}
@@ -12,44 +13,32 @@
 
 \begin{document}
 
-\title{Continuous Integration}
-\subtitle{Software Maintenance and Evolution 2015S}
-
-\toappear{
-	\hrulefill
-	\\
+\title{%
+    \vspace{3cm}
     Continuous Integration\\
-	Software Maintenance and Evolution 2015S\\
-	183.634, 2015S\\
-    Claudiu Cherloaba, 0000000\todo{fill in mnr}\\
-	Roman Decker, 0828572\\
-    Sebastian Störchle, 0825711
-	\vspace{15mm}
+    \large{Software Maintenance and Evolution 2015S}
 }
 
-\numberofauthors{3}
-
 \author{
-\alignauthor
-Claudiu Cherloaba\\
-   \affaddr{\todo[inline]{street number}}\\
-   \affaddr{\todo[inline]{zip city}}\\
-   \email{\small{\todo[inline]{email}}}
-\alignauthor
-Roman Decker\\
-   \affaddr{Göttweigersiedlung 5}\\
-   \affaddr{3161 St. Veit/Gölsen}\\
-   \email{\small{e0828572@student.tuwien.ac.at}}
-\alignauthor
-Sebastian Störchle\\
-   \affaddr{\todo[inline]{street number}}\\
-   \affaddr{\todo[inline]{zip city}}\\
-   \email{\small{e0825711@student.tuwien.ac.at}}
+\begin{tabular}{cc}
+Claudiu Cherloaba             & Roman Decker \\
+00000000\todo{fill in}        & 0828572      \\
+e0000000@student.tuwien.ac.at & e0828572@student.tuwien.ac.at \\
+\\
+\multicolumn{2}{c}{Sebastian Störchle} \\
+\multicolumn{2}{c}{0825711} \\
+\multicolumn{2}{c}{e0825711@student.tuwien.ac.at}
+\end{tabular}
 }
 
 \maketitle
+\thispagestyle{empty}
+\newpage
 
 \input{abstract}
+
+\tableofcontents
+\newpage
 
 \input{introduction}
 
