@@ -128,7 +128,7 @@ clone of the external service. While most of the tools basically support this
 \footnote{\url{https://outofsingularity.wordpress.com/2011/05/15/create-custom-maven-repository-to-store-artifacts-unavailable-in-general-maven-repositories/}},
 it is a complex and expensive approach.
 
-\subsubsection{Tests}\label{sec:tests}
+\subsubsection{Testing}\label{sec:testing}
 
 It clearly makes sense to include automatic tests into the Continuous
 Integration process. With the CI-server performing tests on the built
@@ -142,13 +142,44 @@ test environment has to be self-contained. Most complex applications depend on
 other processes to function (e.g. databases, message brokers, communication
 pipelines, etc.). In order to be able to test the application, these services
 must also be bootstrapped and configured properly for testing. Ideally, the
-services are reset to a clean state before each test run. \\
+services are reset to a clean state before each test run. Indeed, it is
+considered a best practice to run the tests in a clone of an actual production
+environment.\\
 
-Best practice: Test in clone of real production...
+In order to keep the tests up to date with the continuously developed
+application, it is essential, that the tests themselves are extended steadily.
 
-develop tests continuously
+Automated tests are usually done in a unit-testing framework (e.g. JUnit for
+Java). These frameworks usually provide means of exporting test-result data so
+that it can be picked up by the CI-system (and used for reporting).
+
+\paragraph{Code coverage}
+During the test runs, it can be useful to collect
+additional meta-information about the test run. Code-coverage tools provide a
+way of easily determining the breadth of the tests. Depending on the used
+language/framework code coverage can very easily be integrated into the testing
+process and thus provide additional data for reporting \cite{kajo-mece:2012}.
 
 \subsubsection{Static code analysis}\label{sec:static-code-analysis}
+
+Alongside testing, can also collect static information about checked in source
+code. Common use-cases are as follows \cite{bommer:2008}, \cite{sneed:2010}:
+
+\begin{itemize}
+    \item Linting
+    \item Style-checking
+    \item Advanced checks for:
+    \begin{itemize}
+        \item Race conditions
+        \item Buffer overflows
+        \item Memory leaks
+    \end{itemize}
+    \item Architectural metrics
+\end{itemize}
+
+These static code analysis tools can further provide more information to report
+to the development team, which contributes to getting a better overview over the
+overall code quality present in the project source code.
 
 \subsubsection{Deployment}\label{sec:deployment}
 
