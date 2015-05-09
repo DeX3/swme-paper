@@ -18,8 +18,25 @@ and strives to improve team efficiency all together.
 
 \subsection{History}\label{sec:history}
 
+Before Continuous Integration, developers worked on their own separate copies of
+the project for (possibly) long amounts of time. The integration phase of
+software development was scheduled at the end of feature implementation. The
+problem here is, that not all developers worked on the same setup. They use
+different tools or versions on different machines. This would cause various
+instances of "works-for-me"-bugs, issues appeared for some, but not for all
+involved individuals.\\
+
+To prevent this from happening (at least for build-time-errors), often a
+designated build-machine was employed - a server that developers pushed their
+commits to that would automatically build the whole project. Commits would only
+be considered valid, if the build-server was able to build them. Various tools
+were developed to run on these servers (see \ref{sec:tooling-self-hosted}) and gradually,
+these server's capabilities were expanded beyond just building
+\cite{zilberfeld:2013}.\\
+
 When Continuous Integration first became popular, it was tightly coupled to many
 concepts practiced in Extreme Programming. In this software development
 methodology, (typically small) development teams use various coding-focused
 techniques in order to develop software faster.
+
 
