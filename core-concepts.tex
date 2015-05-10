@@ -13,7 +13,7 @@ cost-wise that the build-server uses the same system developers use locally to
 build the product, thus Continuous Integration has to be taken into account when
 first designing the project's development architecture.\\
 
-\subsubsection{Triggers}
+\subsubsection{Triggers}\label{sec:triggers}
 
 Builds in Continuous integration systems need to be triggered by some kind of
 event. The trigger usually falls into one or more of the following categories:
@@ -183,11 +183,44 @@ overall code quality present in the project source code.
 
 \subsubsection{Deployment}\label{sec:deployment}
 
-Address works-for-me-bugs
+It is also possible to incorporate automatic deployment into a Continuous
+Integration build. In this case, successful builds are automatically injected
+into a production-ready environment. This setup is commonly referred to as
+"Continuous Delivery".
 
 \paragraph{Migrations}\label{sec:migrations}
 
+Some of the challenges of Continuous Delivery are similar to the ones faced for
+setting up proper Testing (see \ref{sec:testing}). Often, new versions of the
+project require changes in an underlying data-model. 
+
+For SQL-based solutions, this issue is addressed with migrations. A migration is
+some form of database-script (often in SQL or some domain-specific-language)
+that will update the existing database schema to the correct version while
+taking care of not losing any existing data.
+
+For NOSQL solutions like MongoDB, this issue can be solved similarly, however
+since these data stores typically don't enforce a consistent database schema,
+this can also be handled directly in the application. For this approach, the
+application has to handle this "fuzzy" concept of a schema on its own, which can
+clutter up the code.
+
 \subsection{Source control}\label{sec:source-control}
+
+The version control system is the backbone and therefore a pivotal element of
+Continuous Integration. It supplies the central baseline repository that the
+CI-server will operate upon. Additionally, it provides hooks so that the server
+can trigger event-based builds (see \ref{sec:triggers}).\\
+
+Continuous Integration can be practiced with a multitude of version control
+systems. However, as branching is a central concept in Continuous Integration,
+distributed version control systems like GIT - where branching is a cheap local
+operation - are ideal for this kind of scenario.
+
+A well thought-out branching model can help streamline the development process
+and therefore boost productivity in a Continuous Integration process. Various
+development teams have developed their own branching models for this situation,
+one such example being git-flow \cite{driessen:2010}.\todo{Explain git-flow?}\\
 
 \subsection{Reporting}\label{sec:reporting}
 
