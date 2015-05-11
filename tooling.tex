@@ -1,30 +1,66 @@
 \section{Tooling}\label{sec:tooling}
 
-There exists many good solutions for hosting a continious-integration System. This chapter handles the most popular ones. We categorized the continious-integration Solution in 2 parts. The first part is about CI-Systems, which are hosted on a own private server. The second part of this chapter is about CI-Systems, which are hosted in the cloud.
+There exists many good solutions for hosting a continious-integration System. 
+This chapter handles the most popular ones.
+We categorized the continious-integration Solution in 2 parts.
+The first part is about CI-Systems, which are hosted on a own private server. 
+The second part of this chapter is about CI-Systems, which are hosted in the cloud, which are becoming increasingly popular in the open-source community.
 
 \subsection{Self-hosted}\label{sec:tooling-self-hosted}
 
 Self-hosted continious-integration systems are older than cloud-based continious-integration systems.
-The software for the CI-System runs localy on a private server and the users can reach and use this system over the network. The most popular solutions for a self-hosted CI are:
+The software for the CI-System runs localy on a private server 
+and the users can reach and use this system over the network. 
+The most popular solutions for a self-hosted CI are:
 \begin{itemize} 
-    \item Jenkins(former Hudson) 
-    \item TeamCity 
-    \item CruiseControl
+    \item Jenkins(former Hudson) \footnote{\url{https://jenkins-ci.org/}}
+    \item TeamCity \footnote{\url{https://www.jetbrains.com/teamcity/}}
+    \item CruiseControl \footnote{\url{http://cruisecontrol.sourceforge.net/}}
 \end{itemize}
 The by far most remarkable and famoust one of this CI-systems is Jenkins. 
-Jenkins is written in the Java programming language and completly open source released under the MIT License. Jenkins runs in a servlet container on an application server like GlassFish or Apache Tomcat on all common operating-systems. There are many version-control tools included in Jenkins but the most relevant ones are git and svn. The most powerfull feature of Jenkins is the extensibility of this CI-System with plugins. There are more than 1000 official plugins available for Jenkins to customize the CI-System.  
+Jenkins is written in the Java programming language and completly open source released under the MIT License.
+Jenkins runs in a servlet container on an application server like GlassFish \footnote{\url{https://glassfish.java.net/}}
+or Apache Tomcat \footnote{\url{http://tomcat.apache.org/}}
+on all common operating-systems.
+There are many version-control tools included in Jenkins but the most relevant ones are git and svn.
+The most powerfull feature of Jenkins is the extensibility of this CI-System with plugins.
+There are more than 1000 official plugins available for Jenkins to customize the CI-System.  
 
 \subsection{Cloud-based}\label{sec:tooling-cloud-based}
 
-Cloud-based continious-integration systems are CI-systems which are hosted in the cloud. They are easier to configure than self-hosted CI-systems but have their limitations in the extensibility. They often have a monthly subscription pricing model for private version-control repositories and a free model for public and open-source version-control repositories. The most popular cloud-based CIs are:
+Cloud-based continious-integration systems are CI-systems which are hosted in the cloud.
+They are easier to configure than self-hosted CI-systems but have their limitations in the extensibility.
+They often have a monthly subscription pricing model for private version-control repositories 
+and a free model for public and open-source version-control repositories.
+Thats why they are becoming increasingly popular in the open-source community.
+The most popular cloud-based CIs are:
 \begin{itemize} 
-    \item Travis CI 
-    \item Codeship 
-    \item Drone
+    \item Travis CI \footnote{\url{https://travis-ci.org/}}
+
+    \item Codeship \footnote{\url{https://codeship.com/}}
+
+    \item Drone \footnote{\url{https://drone.io/}}
+
 \end{itemize}
-The most popular cloud-based CI system at the moment is Travis CI. Travis CI is written in the Ruby programming language and became very popular because of the easy integration with the famous git-repository hosting service GitHub. Over 200.000 open-source projects like nodeJs, Ruby on Rails and emberJs and companies like facebook, mozilla, twitter are using Travis Ci as their continious-integration system. The configuration for Travis Ci is done in one simple YAML file with the name travis.yml which must be located in the root directory of a GitHub repository. There are two possible workflows how you can integrate Travis Ci:
+The most popular cloud-based CI system at the moment is Travis CI.
+Travis CI is written in the Ruby programming language and became very popular because of the easy integration with the famous git-repository hosting service GitHub.\footnote{\url{https://github.com/}}
+
+Over 200.000 open-source projects like nodeJs,\footnote{\url{https://nodejs.org/}}
+ Ruby on Rails \footnote{\url{http://rubyonrails.org/}}
+and emberJs \footnote{\url{http://emberjs.com/}}
+
+and companies like facebook,\footnote{\url{https://www.facebook.com/}}
+ mozilla,\footnote{\url{https://www.mozilla.org}}
+ twitter \footnote{\url{https://twitter.com/}}
+are using Travis Ci as their continious-integration system.
+The configuration for Travis Ci is done in one simple YAML file with the name travis.yml 
+which must be located in the root directory of a GitHub repository.
+There are two possible workflows how you can integrate Travis Ci:
 \begin{itemize} 
     \item Branch build flow
     \item Pull request build flow
 \end{itemize}
-In the branch build flow GitHub automaticly triggers a Travis Ci build everytime you push a commit to your remote GitHub repository. If the build is OK and all the tests succeed travis Ci is able to deploy the code on a Paas like heroku. In the pull request build flow everytime you create a pull request on GitHub a Travis Ci build is triggered.
+In the branch build flow GitHub automaticly triggers a Travis Ci build everytime you push a commit to your remote GitHub repository.
+If the build is OK and all the tests succeed Travis Ci is able to deploy the code on a Paas like heroku.
+In the pull request build flow everytime you create a pull request on GitHub a Travis Ci build is triggered.
+
