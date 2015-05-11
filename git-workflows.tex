@@ -1,0 +1,13 @@
+\section{Git-workflows}\label{sec:Git-workflows}
+
+Because the way we use our version control management, influences the way continous integration works, we want to depict different approaches.
+
+\subsection{Centralized Workflow}\label{sec:Centralized Workflow}
+This workflow does not require any other branches beside \textit{master}. It uses a central repository to serve as a single point-of-entry for all changes to the project.
+When a developer wants to commit his changes, he pushes them to the master branch. In case of a conflict the developer has to fetch the updates of the other developers first.
+After that the developer is up-to-date and can now commit his changes, this style results into a perfect linear history of changes.
+A rebase prevents big merge-commits, it tries to merge commit by commit, which results in less conflicts and an easier way to see when bugs got introduced.
+This usage of Git resembls the classic SVN the most and makes transitioning between those two systems the easiest. \\
+
+\subsection{Feature Branch Workflow}
+{Git-workflows}
