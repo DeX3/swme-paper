@@ -10,4 +10,21 @@ A rebase prevents big merge-commits, it tries to merge commit by commit, which r
 This usage of Git resembls the classic SVN the most and makes transitioning between those two systems the easiest. \\
 
 \subsection{Feature Branch Workflow}
-{Git-workflows}
+The general idea of this workflow is to use a branch for every feature that should be implemented. This means every developer can work undisturbed on a particular feature.
+This way the master branch will never contain broken code, this is a huge advantage for continous integration.
+Also pull requests are a way to monitor branches and to discuss them. They make it easy for other developers to comment on branches.
+\\
+There is still a central repository in use but developers now don't commit directly to the master branch. Whenever a developer wants to start a new feature, he creates a so called feature branch.
+Now they work on this branch as usually, comitting, staging and editing. The branches should have descriptive names for the feature they present. 
+The purpose of the branch should be clear and  high-focused. Branches can also be pushed to the main repository, so they can be shared between developers 
+without pushing it on to the 'official code'. This way also the local commits are easily backed  up.
+\\
+This way after a feature is completed it will get into the master branch but not without a pull request. This pull request 'asks' another developer to be merged with the master branch.
+It gives that developer a chance to review the changes before they become a part of the main codebase. This does not have to be only a code review but is the chance to talk about 
+the commited code. It is also possible this way to ask for help. If one developer is stuck he can issue a pull request and other developer get a notification automatically.
+Is one pull request accepted, the same work has to be done this time as in the previous workflow. The local master has to be synchronized with the upstream master then the changes 
+of the feature branch are merged into master and then this updated master gets pushed back into the central repository.
+
+
+
+
