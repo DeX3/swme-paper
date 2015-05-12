@@ -2,48 +2,49 @@
 
 There exists many good solutions for hosting a continious-integration System. 
 This chapter handles the most popular ones.
-We categorized the continious-integration Solution in 2 parts.
-The first part is about CI-Systems, which are hosted on a own private server. 
-The second part of this chapter is about CI-Systems, which are hosted in the cloud, which are becoming increasingly popular in the open-source community.
+We categorized the continious-integration solution in 2 parts.
+The first part is about continious-integration-Systems, which are hosted on a own private server. 
+The second part of this chapter is about continious-integration-Systems, which are hosted in the cloud, which are becoming increasingly popular in the open-source community.
 
 \subsection{Self-hosted}\label{sec:tooling-self-hosted}
 
 Self-hosted continious-integration systems are older than cloud-based continious-integration systems.
-The software for the CI-System runs localy on a private server 
+The software for the continious-integration-System runs localy on a private server 
 and the users can reach and use this system over the network. 
-The most popular solutions for a self-hosted CI are:
+The most popular solutions for a self-hosted continious-integration are:
 \begin{itemize} 
     \item Jenkins(former Hudson) \footnote{\url{https://jenkins-ci.org/}}
     \item TeamCity \footnote{\url{https://www.jetbrains.com/teamcity/}}
     \item CruiseControl \footnote{\url{http://cruisecontrol.sourceforge.net/}}
 \end{itemize}
-The by far most remarkable and famoust one of this CI-systems is Jenkins. 
+The by far most remarkable and famoust one of this continious-integration-systems is Jenkins. 
 Jenkins is written in the Java programming language and completly open source released under the MIT License.
+Many top companies like netflix a\footnote{\url{https://www.netflix.com}}nd open source projects are using Jenkins as their continious-integration-system.
 Jenkins runs in a servlet container on an application server like GlassFish \footnote{\url{https://glassfish.java.net/}}
 or Apache Tomcat \footnote{\url{http://tomcat.apache.org/}}
 on all common operating-systems.
 There are many version-control tools included in Jenkins but the most relevant ones are git and svn.
-The most powerfull feature of Jenkins is the extensibility of this CI-System with plugins.
-There are more than 1000 official plugins available for Jenkins to customize the CI-System.  
+The most powerfull feature of Jenkins is the extensibility of this continious-integration-System with plugins.
+There are more than 1000 official plugins available for Jenkins to customize the continious-integration-System.  
 
 \subsection{Cloud-based}\label{sec:tooling-cloud-based}
 
-Cloud-based continious-integration systems are CI-systems which are hosted in the cloud.
-They are easier to configure than self-hosted CI-systems but have their limitations in the extensibility.
+Cloud-based continious-integration systems are continious-integration-systems which are hosted in the cloud.
+They are easier to configure than self-hosted continious-integration-systems but have their limitations in the extensibility.
 They often have a monthly subscription pricing model for private version-control repositories 
 and a free model for public and open-source version-control repositories.
 Thats why they are becoming increasingly popular in the open-source community.
-The most popular cloud-based CIs are:
+The most popular cloud-based continious-integrations are:
 \begin{itemize} 
-    \item Travis CI \footnote{\url{https://travis-ci.org/}}
+    \item Travis continious-integration \footnote{\url{https://travis-ci.org/}}
 
     \item Codeship \footnote{\url{https://codeship.com/}}
 
     \item Drone \footnote{\url{https://drone.io/}}
 
 \end{itemize}
-The most popular cloud-based CI system at the moment is Travis CI.
-Travis CI is written in the Ruby programming language and became very popular because of the easy integration with the famous git-repository hosting service GitHub.\footnote{\url{https://github.com/}}
+The most popular cloud-based continious-integration system at the moment is Travis continious-integration.
+Travis continious-integration is written in the Ruby programming language and became very popular because of the easy integration with the famous git-repository hosting service GitHub.\footnote{\url{https://github.com/}}
 
 Over 200.000 open-source projects like nodeJs,\footnote{\url{https://nodejs.org/}}
  Ruby on Rails \footnote{\url{http://rubyonrails.org/}}
