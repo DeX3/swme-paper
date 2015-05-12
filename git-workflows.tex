@@ -1,6 +1,6 @@
-\section{Git-workflows}\label{sec:Git-workflows}
+\section{Git-workflows \footnote{\url{https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow}}}
 
-Because the way we use our version control management, influences the way continous integration works, we want to depict different approaches.
+Because the way we use our version control management, influences the way continous integration works, we want to depict different approaches to version control management.
 
 \subsection{Centralized Workflow}\label{sec:Centralized Workflow}
 This workflow does not require any other branches beside \textit{master}. It uses a central repository to serve as a single point-of-entry for all changes to the project.
@@ -23,7 +23,21 @@ This way after a feature is completed it will get into the master branch but not
 It gives that developer a chance to review the changes before they become a part of the main codebase. This does not have to be only a code review but is the chance to talk about 
 the commited code. It is also possible this way to ask for help. If one developer is stuck he can issue a pull request and other developer get a notification automatically.
 Is one pull request accepted, the same work has to be done this time as in the previous workflow. The local master has to be synchronized with the upstream master then the changes 
-of the feature branch are merged into master and then this updated master gets pushed back into the central repository.
+of the feature branch are merged into the local master and then this updated master gets pushed back into the central repository.
+
+\subsection{Gitflow Workflow}
+The Gitflow Worklfow is a somehow stricter version of the Feature Branch Workflow. The branching model is more strict and resolves around the project release.
+It does not add new commands or concepts, but assigns different purposes to branches. In addition to the known feature branches there are now also branches 
+for preparing, maintaining, and recording releases. Those different roles define how those branches interact. Of course the same benefits of Feature Branch Workflow apply.
+\\
+Still every developer works locally and pushes branches to the central repo, the only difference is the branch structure of the project.
+This workflow uses a develop branch parallel to the master branch. The master branch stores the official release history while the develop branch serves an integration branch for features.
+All commits to the master branch should be tagged with a version number.
+Feature branches now dont interact directly with the master branch. They branch off the develop branch and also get merged back to the develop branch, when it's complete.
+This part behaves like the Feature Branch Workflow, but it does not stop here.
+Once develop has enough features for the next release, you fork a release branch off of develop. This dedicated branch for releases can be polished and get bugfixes 
+once this branch is ready to ship, it gets merged back to master and develop. For hotfixes or maintenance it is ok to branch directly from master, to quickly patch production releases.
+
 
 
 
