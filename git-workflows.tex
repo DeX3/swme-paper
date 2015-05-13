@@ -40,6 +40,17 @@ Feature branches now dont interact directly with the master branch. They branch 
 This part behaves like the Feature Branch Workflow, but it does not stop here.
 Once develop has enough features for the next release, you fork a release branch off of develop. This dedicated branch for releases can be polished and get bugfixes 
 once this branch is ready to ship, it gets merged back to master and develop. For hotfixes or maintenance it is ok to branch directly from master, to quickly patch production releases.
+\\
+\subsection{Forking Workflow}
+This workflow is inherently different than the other workflows. The Forking Workflow gives every developer also an extra server-side repository to commit to.
+This means every developer has now two repositories. A private local one and a public server-side one. This way the contributions can be integrated without
+ the need to give every developer access to a single central repository. The project manager can accept the features and integrate them without giving the developer write 
+access to the official codebase. This distributed workflow provides a flexible way for large and organic teams. Now they are able to collaborate in a secure way. For an open source 
+project this is ideal.
+\\
+The main difference here is just how those branches are shared between developers. For Git all those server-side repositories are the same and the official one is just the public 
+repository of the project maintainer. Still every developer should use his own branches for different features and push them to his own server-side repository. Those branches will be pulled 
+into the local repository of another developer so they can finally end into the official server-side repository.
 
 
 
