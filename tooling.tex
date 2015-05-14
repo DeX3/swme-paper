@@ -1,40 +1,46 @@
 \section{Tooling}\label{sec:tooling}
 
-There exists many good solutions for hosting a continious-integration System. 
-This chapter handles the most popular ones.
-We categorized the continious-integration solution in 2 parts. 
+There exist a number of good solutions for hosting a Continuous Integration
+system. This chapter handles the most popular ones. We categorize the
+Continuous Integration solution into two classes. 
+
 \begin{itemize} 
-    \item self-hosted continious-integration systems
-    \item cloud-based continious-integration systems 
+    \item self-hosted Continuous Integration systems
+    \item cloud-based Continuous Integration systems 
 \end{itemize}
 
-The first part is about continious-integration-Systems, which are hosted on a own private server. 
-The second part of this chapter is about continious-integration-Systems, which are hosted in the cloud, which are becoming increasingly popular in the open-source community.
+The first part is about Continuous Integration systems which are hosted on a
+own private server. The second part of this chapter is about Continuous
+Integration systems which are hosted in the cloud, which are becoming
+increasingly popular in the open-source community.
 
 \subsection{Self-hosted}\label{sec:tooling-self-hosted}
 
-Self-hosted continious-integration systems are older than cloud-based continious-integration systems.
-The software for the continious-integration-System runs localy on a private server 
-and the users can reach and use this system over the network. 
-The most popular solutions for a self-hosted continious-integration are:
+Self-hosted Continuous Integration systems are older than cloud-based Continuous
+Integration systems. The Continuous Integration application runs locally on a
+private server and the users can reach and use this system over the network. The
+most popular solutions for a self-hosted Continuous Integration are:
+
 \begin{itemize} 
-    \item Jenkins(former Hudson) \footnote{\url{https://jenkins-ci.org/}}
+    \item Jenkins(formerly known as Hudson)
+        \footnote{\url{https://jenkins-ci.org/}}
     \item TeamCity \footnote{\url{https://www.jetbrains.com/teamcity/}}
     \item CruiseControl \footnote{\url{http://cruisecontrol.sourceforge.net/}}
 \end{itemize}
 
 \subsubsection{Jenkins}
-The by far most remarkable and famoust one of this continious-integration-systems is Jenkins. 
-Jenkins is written in the Java programming language and completly open source released under the MIT License.
-Many top companies like netflix \footnote{\url{https://www.netflix.com}} and open source projects
-are using Jenkins as their continious-integration-system.
-Jenkins runs in a servlet container on an application server like GlassFish \footnote{\url{https://glassfish.java.net/}}
-or Apache Tomcat \footnote{\url{http://tomcat.apache.org/}} \\
-To install Jenkins you can simple download the binary and install it on the operating-system.\\
-Jenkis can run on following operating systems: 
-There are many version-control tools included in Jenkins but the most relevant ones are git and svn.
-The most powerfull feature of Jenkins is the extensibility of this continious-integration-System 
-with plugins.\\
+
+The by far most remarkable and famous one of these Continuous Integration
+systems is Jenkins. Jenkins is written in the Java programming language and
+completely open source released under the MIT License. Many top companies like
+Netflix \footnote{\url{https://www.netflix.com}} and various open source
+projects are using Jenkins as their Continuous Integration system. Jenkins runs
+in a servlet container inside of an application server like GlassFish
+\footnote{\url{https://glassfish.java.net/}} or Apache Tomcat
+\footnote{\url{http://tomcat.apache.org/}}. To install Jenkins you can simple
+download an installer-binary and use it to install it on the operating-system.\\
+
+Jenkins can run on following operating systems: 
 
 \begin{itemize} 
         \item Windows
@@ -47,74 +53,95 @@ with plugins.\\
         \item Gentoo
 \end{itemize}
 
-There are more than 1000 official plugins available for Jenkins to customize the continious-integration-System.  
-One example of the extensibility of Jenkins is to distribute one or more  Jobs on many 
-different machines over the network. That can reduce the running time dramatically and 
-is a realy good and effective solution if the system has a big Unit-Test-Suite or GUI-Tests 
-like selenium \footnote{\url{http://www.seleniumhq.org/}}, which opens a browser every time 
-a test is started. The different machines are called nodes in Jenkins.
+Jenkins supports a host of version-control systems, the most relevant ones being
+git and svn. The most powerful feature of Jenkins is its extensibility with
+plugins.\\
+
+There are more than 1000 official plugins available for Jenkins to customize the
+Continuous Integration system. One example of the extensibility of Jenkins is
+the ability to to delegate one or more Jobs to other slave-machines on the
+network. This can reduce the time of builds dramatically and is a really good
+and effective solution if the system has a big Unit-Test-Suite or GUI-Tests like
+Selenium \footnote{\url{http://www.seleniumhq.org/}}, which opens a browser
+every time a test is started. The different machines are called nodes in
+Jenkins.
 
 \subsubsection{TeamCity}
 
-TeamCity is also a self-hosted continious-integration system build by JetBrains. Companies like
-Apple \footnote{\url{https://www.apple.com}} and Siemens \footnote{\url{http://www.siemens.com/}} useTeamCity as their continous-integration system.\\
-Teamcity has a different pricing model than Jenkins. 
-It is free forever but has following limitations:
+TeamCity is another self-hosted Continuous Integration system built by
+JetBrains. Companies like Apple \footnote{\url{https://www.apple.com}} and
+Siemens \footnote{\url{http://www.siemens.com/}} use TeamCity as their
+Continuous Integration system.\\
+
+TeamCity has a different pricing model than Jenkins. It is generally free, but
+has the following limitations/restrictions:
 
 \begin{itemize} 
-        \item 20 build configurations
-        \item 3 build agents
+        \item no more than 20 build configurations
+        \item no more than 3 build agents
 \end{itemize}
 
-Build agents are similar to Jenkins nodes and a powerfull feature of TeamCity. If you want more than 3 build agents for your jobs you have to buy the Enterprise edition.
+Build agents are similar to Jenkins' nodes and a powerful feature of TeamCity.
+If more than 3 build agents are desired to work on build jobs, TeamCity provides
+a (fee-based) Enterprise edition.
 
 \subsection{Cloud-based}\label{sec:tooling-cloud-based}
 
-Cloud-based continious-integration systems are continious-integration-systems which are hosted in the cloud.
-They are easier to configure than self-hosted continious-integration-systems but have their limitations in the extensibility.
-They often have a monthly subscription pricing model for private version-control repositories 
-and a free model for public and open-source version-control repositories.
-Thats why they are becoming increasingly popular in the open-source community.
-The most popular cloud-based continious-integrations are:
+Cloud-based Continuous Integration systems are Continuous Integration systems,
+that - as their name suggests - are hosted in the cloud. They are easier to
+configure than self-hosted Continuous Integration systems but have their
+limitations in their extensibility. They often have a monthly subscription
+pricing model for private version-control repositories and a free model for
+public and open-source version-control repositories. That is why they are
+becoming increasingly popular in the open-source community. The most popular
+cloud-based Continuous Integrations are: 
+
 \begin{itemize} 
     \item Travis CI \footnote{\url{https://travis-ci.org/}}
-
     \item Codeship \footnote{\url{https://codeship.com/}}
-
     \item Drone \footnote{\url{https://drone.io/}}
-
 \end{itemize}
 
 \subsubsection{Travis CI}
-The most popular cloud-based continious-integration system at the moment is Travis CI.
-Travis CI is written in the Ruby programming language and became very popular because of the easy integration with the famous git-repository hosting service GitHub.\footnote{\url{https://github.com/}}\\
-Over 200.000 open-source projects like nodeJs,\footnote{\url{https://nodejs.org/}}
- Ruby on Rails \footnote{\url{http://rubyonrails.org/}}
-and emberJs \footnote{\url{http://emberjs.com/}}
-and companies like facebook,\footnote{\url{https://www.facebook.com/}}
- mozilla,\footnote{\url{https://www.mozilla.org}}
- twitter \footnote{\url{https://twitter.com/}}
-are using Travis Ci as their continious-integration system.\\
-The configuration for Travis CI is done in one simple YAML file with the name travis.yml 
-which must be located in the root directory of a GitHub repository.
-There are two possible workflows how you can integrate Travis Ci:
-\begin{itemize} 
+
+The most popular cloud-based Continuous Integration system at the moment is
+Travis CI. Travis CI is written in the Ruby programming language and became
+very popular because of the easy integration with the famous git-repository
+hosting service GitHub\footnote{\url{https://github.com/}}.\\
+
+Over 200.000 open-source projects like
+nodeJS\footnote{\url{https://nodejs.org/}}, Ruby on Rails
+\footnote{\url{http://rubyonrails.org/}} and emberJS
+\footnote{\url{http://emberjs.com/}} and companies like
+Facebook\footnote{\url{https://www.facebook.com/}},
+Mozilla\footnote{\url{https://www.mozilla.org}} or
+Twitter\footnote{\url{https://twitter.com/}} are using Travis CI as their
+Continuous Integration system.\\ The configuration for Travis CI is done in one
+simple YAML file with the name \lstinline|travis.yml| which must be located in
+the root directory of a GitHub repository. There are two possible workflows how
+you can integrate Travis CI:
+
+\begin{itemize}
     \item Branch build flow
     \item Pull request build flow
 \end{itemize}
-\paragraph{Branch build flow}
-In the branch build flow GitHub automaticly triggers a Travis Ci build everytime you 
-push a commit to your remote GitHub repository.\\
-If the build is OK and all the tests succeed Travis Ci is able to deploy the 
-code on a Paas like heroku.
-\paragraph{Pull request build flow}
-In the pull request build flow everytime you create a pull request on GitHub a Travis Ci build is triggered.
+
+\paragraph{Branch build flow} In the branch build flow GitHub automatically
+triggers a Travis CI build every time you push a commit to your remote GitHub
+repository.\\ If the build is OK and all the tests succeed, Travis CI is able to
+deploy the code on a PaaS like Heroku\footnote{\url{https://www.heroku.com/}}.
+
+\paragraph{Pull request build flow} In the pull request build flow everytime you
+create a pull request on GitHub a Travis CI build is triggered.
 
 \subsubsection{Drone}
 
-Drone is developed by Google and like Travis CI a cloud-based continious-integration system.\\
-Drone integrates seamlessly with the two popular version-control hosting services 
-Github and Bitbucket \footnote{\url{https://bitbucket.org/}}
-as well as Platform-as-a-service providers such as Heroku, Dotcloud \footnote{\url{https://www.dotcloud.com/}},
+Drone is developed by Google and like Travis CI a cloud-based Continuous
+Integration system.\\
+
+Drone integrates seamlessly with the two popular
+version-control hosting services GitHub and Bitbucket
+\footnote{\url{https://bitbucket.org/}} as well as Platform-as-a-service
+providers such as Heroku, Dotcloud \footnote{\url{https://www.dotcloud.com/}},
 Google AppEngine  \footnote{\url{https://cloud.google.com/appengine/}}.
 

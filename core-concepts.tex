@@ -220,8 +220,22 @@ operation - are ideal for this kind of scenario.
 A well thought-out branching model can help streamline the development process
 and therefore boost productivity in a Continuous Integration process. Various
 development teams have developed their own branching models for this situation,
-one such example being git-flow \cite{driessen:2010}.\todo{Explain git-flow?}\\
+one such example being git-flow \cite{driessen:2010}. For a more detailed
+explanation on git-flow, see section \ref{sec:git-flow}.
 
 \subsection{Reporting}\label{sec:reporting}
 
+To actually harness the benefits of Continuous Integration, results of builds
+(of whatever type) should be propagated to the relevant personnel. For
+commit-triggered builds, the responsible developer should be informed once the
+build completes (especially if it fails). For timed builds, also a responsible
+person has to be notified in case of a failed build.\\
 
+In most cases, e-Mail is the medium of choice for these kinds of notifications.
+However, most CI-systems allow for a multitude of possible notification
+channels, such as IRC-messages, various desktop-notification systems (growl,
+chrome-notifications, etc.) or even text notifications via SMS.
+
+Most systems provide high extensibility for this mechanism by a simple
+webhook-API. This means, that the CI-system will simply send a HTTP-request to a
+configurable endpoint with notification information when a build event happens.

@@ -1,58 +1,93 @@
 \section{Git-workflows}
 
-Because the way we use our version control management, influences the way
-continous integration works, we want to depict different approaches to version
-control
-management.\footnote{\url{https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow}}
+Because the way we use our version control management influences the way
+Continuous Integration works, we want to depict different approaches to version
+control management \cite{atlassian:2013}.
 
-\subsection{Centralized Workflow}\label{sec:Centralized Workflow}
-This workflow does not require any other branches beside \textit{master}. It uses a central repository to serve as a single point-of-entry for all changes to the project.
-When a developer wants to commit his changes, he pushes them to the master branch. In case of a conflict the developer has to fetch the updates of the other developers first.
-After that the developer is up-to-date and can now commit his changes, this style results into a perfect linear history of changes.
-A rebase prevents big merge-commits, it tries to merge commit by commit, which results in less conflicts and an easier way to see when bugs got introduced.
-This usage of Git resembls the classic SVN the most and makes transitioning between those two systems the easiest. \\
+\subsection{Centralized Workflow}\label{sec:centralized-workflow}
+
+This workflow does not require any other branches beside \textit{master}. It
+uses a central repository to serve as a single point-of-entry for all changes to
+the project. When a developer wants to commit his changes, he pushes them to
+the master branch. In case of a conflict, the developer has to fetch the updates
+of the other developers first. After that, the developer is up-to-date and can
+now commit his changes, this style results in a perfect linear history of
+changes. A rebase prevents big merge-commits, it tries to merge commit by
+commit, which results in less conflicts and an easier way to see, when bugs got
+introduced. This usage of Git resembles the classic SVN-style the most and
+makes transitioning between those two systems the easiest. \\
 
 \subsection{Feature Branch Workflow}
-The general idea of this workflow is to use a branch for every feature that should be implemented. This means every developer can work undisturbed on a particular feature.
-This way the master branch will never contain broken code, this is a huge advantage for continous integration.
-Also pull requests are a way to monitor branches and to discuss them. They make it easy for other developers to comment on branches.
-\\
-There is still a central repository in use but developers now don't commit directly to the master branch. Whenever a developer wants to start a new feature, he creates a so called feature branch.
-Now they work on this branch as usually, comitting, staging and editing. The branches should have descriptive names for the feature they present. 
-The purpose of the branch should be clear and  high-focused. Branches can also be pushed to the main repository, so they can be shared between developers 
-without pushing it on to the 'official code'. This way also the local commits are easily backed  up.
-\\
-This way after a feature is completed it will get into the master branch but not without a pull request. This pull request 'asks' another developer to be merged with the master branch.
-It gives that developer a chance to review the changes before they become a part of the main codebase. This does not have to be only a code review but is the chance to talk about 
-the commited code. It is also possible this way to ask for help. If one developer is stuck he can issue a pull request and other developer get a notification automatically.
-Is one pull request accepted, the same work has to be done this time as in the previous workflow. The local master has to be synchronized with the upstream master then the changes 
-of the feature branch are merged into the local master and then this updated master gets pushed back into the central repository.
 
-\subsection{Gitflow Workflow}
-The Gitflow Worklfow is a somehow stricter version of the Feature Branch Workflow. The branching model is more strict and resolves around the project release.
-It does not add new commands or concepts, but assigns different purposes to branches. In addition to the known feature branches there are now also branches 
-for preparing, maintaining, and recording releases. Those different roles define how those branches interact. Of course the same benefits of Feature Branch Workflow apply.
-\\
-Still every developer works locally and pushes branches to the central repo, the only difference is the branch structure of the project.
-This workflow uses a develop branch parallel to the master branch. The master branch stores the official release history while the develop branch serves an integration branch for features.
-All commits to the master branch should be tagged with a version number.
-Feature branches now dont interact directly with the master branch. They branch off the develop branch and also get merged back to the develop branch, when it's complete.
-This part behaves like the Feature Branch Workflow, but it does not stop here.
-Once develop has enough features for the next release, you fork a release branch off of develop. This dedicated branch for releases can be polished and get bugfixes 
-once this branch is ready to ship, it gets merged back to master and develop. For hotfixes or maintenance it is ok to branch directly from master, to quickly patch production releases.
-\\
+The general idea of this workflow is to use a branch for every feature that
+should be implemented. This means every developer can work undisturbed on a
+particular feature. This way the master branch will never contain broken code,
+which is a huge advantage for Continuous Integration. Also, pull requests are a
+way to monitor branches and to discuss them. They make it easy for other
+developers to comment on branches.\\
+
+There is still a central repository in use but developers now don't commit
+directly to the master branch. Whenever a developer wants to start a new
+feature, he creates a so called feature-branch. Now they work on this branch as
+usual, editing, staging and committing. The branches should have descriptive
+names for the feature they present. The purpose of the branch should be clear
+and focused. Branches can also be pushed to the main repository, so they
+can be shared between developers without pushing it on to the 'official code'.
+This way, also the local commits are easily backed up.\\
+
+This way after a feature is completed it will get into the master branch but not
+without a pull request. This pull request 'asks' another developer to be merged
+with the master branch. It gives that developer a chance to review the changes
+before they become a part of the main codebase. This does not have to be only a
+code review but is the chance to talk about the committed code. It is also
+possible this way to ask for help. If one developer is stuck he can issue a pull
+request and other developer get a notification automatically. If a pull
+request is accepted, the same work has to be done this time as in the previous
+workflow. The local master has to be synchronized with the upstream master then
+the changes of the feature branch are merged into the local master and then this
+updated master gets pushed back into the central repository.
+
+\subsection{Gitflow Workflow}\label{sec:git-flow}
+
+The Gitflow Workflow is an arguably stricter version of the Feature Branch
+Workflow. The branching model is thus more strict and resolves around the
+project release. It does not add new commands or concepts, but assigns different
+purposes to branches. In addition to the known feature branches there are now
+also branches for preparing, maintaining, and recording releases. Those
+different roles define how those branches interact. Of course the same benefits
+of feature Branch Workflow apply.\\
+
+Still every developer works locally and pushes branches to the central
+repository, the only difference is the branch structure of the project. This
+workflow uses a develop branch parallel to the master branch. The master branch
+stores the official release history while the develop branch serves an
+integration branch for features. All commits to the master branch should be
+tagged with a version number. Feature branches now don't interact directly with
+the master branch. They branch off the develop branch and also get merged back
+to the develop branch, when it's complete. This part behaves like the Feature
+Branch Workflow, but it does not stop here. Once develop has enough features for
+the next release, you fork a release branch off of develop. This dedicated
+branch for releases can be polished and get bugfixes once this branch is ready
+to ship, it gets merged back to master and develop. For hotfixes or maintenance
+it is ok to branch directly from master, to quickly patch production releases.\\
+
 \subsection{Forking Workflow}
-This workflow is inherently different than the other workflows. The Forking Workflow gives every developer also an extra server-side repository to commit to.
-This means every developer has now two repositories. A private local one and a public server-side one. This way the contributions can be integrated without
- the need to give every developer access to a single central repository. The project manager can accept the features and integrate them without giving the developer write 
-access to the official codebase. This distributed workflow provides a flexible way for large and organic teams. Now they are able to collaborate in a secure way. For an open source 
-project this is ideal.
-\\
-The main difference here is just how those branches are shared between developers. For Git all those server-side repositories are the same and the official one is just the public 
-repository of the project maintainer. Still every developer should use his own branches for different features and push them to his own server-side repository. Those branches will be pulled 
-into the local repository of another developer so they can finally end into the official server-side repository.
 
+This workflow is inherently different than the other workflows. The Forking
+Workflow gives every developer also an extra server-side repository to commit
+to. This means every developer has now two repositories. A private local one and
+a public server-side one. This way the contributions can be integrated without
+the need to give every developer access to a single central repository. The
+project manager can accept the features and integrate them without giving the
+developer write access to the official codebase. This distributed workflow
+provides a flexible way for large teams. Now they are able to collaborate in a
+secure way. This is an ideal model for an open-source project.\\
 
-
-
+The main difference here is just how those branches are shared between
+developers. For Git all those server-side repositories are the same and the
+official one is just the public repository of the project maintainer. Still
+every developer should use his own branches for different features and push them
+to his own server-side repository. Those branches will be pulled into the local
+repository of another developer so they can finally end into the official
+server-side repository.
 
